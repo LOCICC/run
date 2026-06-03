@@ -1,0 +1,10 @@
+file(GLOB SALT_SRCS *.cpp */*.cpp)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_C_COMPILER ${CMAKE_CXX_COMPILER})
+set(POWV9_DAT ${FLUTE_HOME}/etc/POWV9.dat)
+set(POST9_DAT ${FLUTE_HOME}/etc/POST9.dat)
+add_library(salt STATIC ${SALT_SRCS})
+target_link_libraries(salt PRIVATE flute)
+target_include_directories(salt PRIVATE ${FLUTE_HOME}
+ /root/autodl-tmp/keans/src/slover1/tools)
+ target_compile_options(salt PRIVATE -O3 -march=native)
